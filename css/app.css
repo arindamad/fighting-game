@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background: url(../images/04.jpg);
+    -webkit-animation:100s scroll infinite linear reverse;
+    -moz-animation:100s scroll infinite linear reverse;
+    -o-animation:100s scroll infinite linear reverse;
+    -ms-animation:100s scroll infinite linear reverse;
+    animation:100s scroll infinite linear reverse;
+    background-size: 600px;
+}
+@-webkit-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-moz-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-o-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-ms-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+body::after {
+    clear: both;
+}
+
+.heroship {
+    user-select: none;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+}
+
+.mousePos {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#roketTel {
+    animation: example 2s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes example {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+    }
+}
+
+/* Standard syntax */
+
+@keyframes example {
+    from {
+        fill: red;
+        transform: scale(1);
+    }
+    to {
+        fill: rgb(255, 94, 0);
+        transform: scale(0.9) translate(5%, 5%);
+    }
+}
+
+.laserBeem {
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: rgb(0, 172, 149);
+    transform: translateX(-50%);
+}
+
+.power {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: calc(100% + 44px) !important;
+    animation: scaleable 0.5s infinite;
+    margin: -22px;
+    display: none;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes scaleable {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+    }
+}
+
+/* Standard syntax */
+
+@keyframes scaleable {
+    from {
+        transform: scale(1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+}
+
+.bigBeam {
+    position: absolute;
+    width: 78px;
+    height: 100%;
+    background: rgba(248, 80, 50, 1);
+    background: -moz-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248, 80, 50, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#ffffff', GradientType=0);
+    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    transition: all 600ms ease-in-out;
+}
+.bigBeam.move{
+    top: -100%;
+}
+#pathToBeShown{
+    display: none;
+}
+
+
+/* //css for enemy */
+.enemy{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+.enemy img{
+    width: 100%;
+}
