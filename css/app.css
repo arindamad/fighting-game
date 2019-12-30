@@ -101,9 +101,16 @@ body::after {
 .laserBeem {
     position: absolute;
     width: 4px;
-    height: 40px;
-    background: rgb(0, 172, 149);
+    height: 60px;
     transform: translateX(-50%);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00ac95+1,ffffff+100 */
+    background: #00ac95; /* Old browsers */
+    background: -moz-linear-gradient(top,  #00ac95 1%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #00ac95 1%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #00ac95 1%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ac95', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .power {
@@ -176,5 +183,47 @@ body::after {
     z-index: 3;
   }
 .enemy img{
-    width: 100%;
+    width: 100%;    
+}
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+.blastIcon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;    
+    transform: scale(0.2);    
+}
+
+
+.blastIcon.in{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(2);
+    
+}
+
+/* //for explosion  */
+.blasted{
+    position: absolute;
+    width: 50px;    
+}
+.blasted .blastIcon{
+    width: 50px;
+}
+.killCoutn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #333;
+    padding: 20px;
+}
+.killCoutn h2{
+    font-size: 20px;
 }

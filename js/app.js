@@ -90,21 +90,25 @@ hold_trigger.mousedown(function() {
 
 
 
-// for Creating enemy
+// ====>>>>>for Creating enemy
+
 var windowWidth = $(window).width();
 var windowHeight = $(window).height();
 var barOfsetTop = windowHeight -20;
-// var arTime = setInterval(function(){
-// var randomPositon = Math.random() * windowWidth;
-// var redRandom = Math.floor(Math.random() * 3); 
-// $( "body" ).prepend( "<div class='enemy' style='left:"+randomPositon+"px;' data-power='30' ><img src='images/enemy/"+redRandom+".svg'></div>" );
-// }, 15000);
 
-$( "body" ).prepend( "<div class='enemy' style='left:"+500+"px;' data-power='30' ><img src='images/enemy/"+1+".svg'></div>" );
+var arTime = setInterval(function(){
+    // createNewEnemy();
+}, 1000);
+var createNewEnemy =()=>{
+    var randomPositon = Math.random() * (windowWidth - 50);
+    console.log(randomPositon);
+    var redRandom = Math.floor(Math.random() * 3); 
+    $( "body" ).prepend( "<div class='enemy' style='left:"+randomPositon+"px;' data-power='30' ><img src='images/enemy/"+redRandom+".svg'></div>" );
+}
+createNewEnemy();
 
 
 
-//for enemy move
 
 
 
@@ -112,6 +116,7 @@ $( "body" ).prepend( "<div class='enemy' style='left:"+500+"px;' data-power='30'
 
 
 //for enemy destroy
+var killCount =0;
 let enemyDestroy = ()=>{
     let eachEnemyOfset = 0;
     let eachEnemyWidth = 0;
@@ -125,58 +130,73 @@ let enemyDestroy = ()=>{
 
         eachEnemyHeight = $(this).height();
         $('.laserBeem').each(function(){
+            var toBeReomved = $(this);
             beamdtls={
                 width: $(this).width(),
                 height: $(this).height(),
                 offset: $(this).offset()
             }
-            console.log((eachEnemyOfset.left+50), beamdtls.offset.left);
-            if(beamdtls.offset.top<eachEnemyOfset.top+eachEnemyHeight && eachEnemyOfset.left>beamdtls.offset.left && (eachEnemyOfset.left+50)<=beamdtls.offset.left  ){
-                toBekill.remove();
-                console.log("killed");
+            console.log("enemy right: "+ (eachEnemyOfset.left+50), "enemy beamPos: "+ beamdtls.offset.left);
+
+            console.log(beamdtls.offset.top<eachEnemyOfset.top+eachEnemyHeight);
+
+            console.log(eachEnemyOfset.left>beamdtls.offset.left);
+
+            if(beamdtls.offset.top<eachEnemyOfset.top+(eachEnemyHeight/4) && eachEnemyOfset.left<=beamdtls.offset.left && (eachEnemyOfset.left+50)>beamdtls.offset.left  ){
+                toBekill.find('img').addClass("hidden");
+                toBekill.removeClass().addClass("blasted").append('<img class="blastIcon in" src="images/blast/1.png">');
+                toBeReomved.remove();      
+                setTimeout(function(){
+                    $(".blasted").fadeOut(300, function(){
+                        $(this).remove();
+                    });
+                }, 100);
+                killCount++;
             }
+
         });
     });
 }
 
 
 
+//=====>>>for enemy move
 
-// var pointcount = 0;
-// var falseCount = 0;
-// // for movement
-// setInterval(function(){
-//   var baGro= "";
-//   $( ".balls" ).each(function(index){
-//     baGro = $( ".balls" ).eq(index).css('background-color');
-//     var eachTop = $(this).css('top');
-//     var eachLeft = $(this).css('left');
+var pointcount = 0;
+var falseCount = 0;
+// for movement
+setInterval(function(){
+  var baGro= "";
+  $( ".enemy" ).each(function(index){
+    baGro = $( ".enemy" ).eq(index).css('background-color');
+    var eachTop = $(this).css('top');
+    var eachLeft = $(this).css('left');
     
-//     var barPositionleft = $('.bar').css('left');
-//     var ofseTop = parseInt(barOfsetTop);
-//     // console.log(parseInt(eachLeft));
-//     var y = parseInt(barPositionleft) + 200;
-//     console.log(baGro);
-//     if(ofseTop - 20 < parseInt(eachTop) && parseInt(eachLeft) > parseInt(barPositionleft) && (parseInt(eachLeft) < y) ){
-//       pointcount++;
-//       $('.yourSchoreis').html(pointcount);
-//        $( ".balls" ).eq(index).remove();
-//        console.log(pointcount);
-//        $( ".bar" ).css('background-color', baGro );
-//        }else if(parseInt(eachTop) >= parseInt(windowHeight)){
-//          if(falseCount==3){
-//            $('.outOver').fadeIn();
-//            $('.outOver p').text('Your score is '+ pointcount);
-//            clearInterval(arTime);
-//            $( ".balls" ).remove();
-//          }else{
-//             falseCount++;
-//          }
-//          $( ".balls" ).eq(index).remove();
-//         // console.log('true');
-//        }else{
-//         $(this).css('top',parseInt(eachTop) + 1);
-//        }
+    var barPositionleft = $('.bar').css('left');
+    var ofseTop = parseInt(barOfsetTop);
+    // console.log(parseInt(eachLeft));
+    var y = parseInt(barPositionleft) + 200;
+    console.log(baGro);
+    if(ofseTop - 20 < parseInt(eachTop) && parseInt(eachLeft) > parseInt(barPositionleft) && (parseInt(eachLeft) < y) ){
+      pointcount++;
+      $('.yourSchoreis').html(pointcount);
+       $( ".enemy" ).eq(index).remove();
+       console.log(pointcount);
+       $( ".bar" ).css('background-color', baGro );
+       }else if(parseInt(eachTop) >= parseInt(windowHeight)){
+         if(falseCount==3){
+           $('.outOver').fadeIn();
+           $('.outOver p').text('Your score is '+ pointcount);
+           clearInterval(arTime);
+           $( ".enemy" ).remove();
+         }else{
+            // falseCount++;
+         }
+         $( ".enemy" ).eq(index).remove();
+        // console.log('true');
+       }else{
+        $(this).css('top',parseInt(eachTop) + 1);
+       }
      
-//   });
-// }, 10);
+  });
+}, 10);
