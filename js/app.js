@@ -113,7 +113,7 @@ var createNewEnemy =()=>{
 createNewEnemy();
 
 var createBigboss = (bossCoutn)=>{
-    if(bossCoutn%50===2){
+    if(bossCoutn%20===1){
         console.log("bigbossCreate");
         var randomPositon = Math.random() * (windowWidth - 100);
         $("body").prepend( "<div class='bigBoss enemy' style='left:"+randomPositon+"px;' data-power='200' ><img src='images/enemy/gaint.svg'></div>" );
@@ -219,7 +219,7 @@ setInterval(function(){
            clearInterval(arTime);
            $( ".enemy" ).remove();
          }else{
-            // falseCount++;
+            falseCount++;
          }
          $( ".enemy" ).eq(index).remove();
         // console.log('true');

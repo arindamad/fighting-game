@@ -236,3 +236,88 @@ body::after {
 .bigBoss.blasted img{
     width: 100px;
 }
+
+/* //for game over */
+.gameOver{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    z-index: 6;
+}
+.gameOver h1 {
+    font-size: 60px;
+    color: #ff6262;
+}
+.gameOver h2 {
+    font-size: 50px;
+    color: #31ffe3;
+}
+.gameOver h4 {
+    font-size: 28px;
+    color: #94f0ff;
+    margin: 6px 0 15px;
+}
+.gameOver p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+.playerName{
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    border: none;
+    font-size: 18px;
+    padding: 0 15px;
+}
+.playerName:focus{
+    outline: none;
+}
+.saveBtn{
+    padding: 0 20px;
+    height: 46px;
+    line-height: 46px;
+    background: #098fa5;
+    color: #fff;
+    border: none;
+    font-size: 17px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.saveNameGroup{
+    position: relative;
+    padding-right: 78px;
+}
+.scoreBoard table{
+    width: 100%;
+    font-size: 18px;
+    background: #ffffff;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+.scoreBoard table tr th {
+    background: #098fa5;
+    padding: 6px 8px;
+    color: #e9fcff;
+}
+.scoreBoard table tr td {
+    padding: 6px 8px;
+    border-right: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+}
+.topSchore {
+    font-size: 28px;
+    color: #ffe69e;
+    margin-bottom: 34px;
+    margin-top: 6px;
+}
