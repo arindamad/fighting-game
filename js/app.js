@@ -25,7 +25,7 @@ fire();
 
 // for Create laserbeem
 var createLeaser = (mouseX, mouseY)=>{
-    $("#ship").after(`<div class="laserBeem" style="left:`+(mouseX)+`px; top:`+(mouseY-80)+`px;" data-power="10"></div>`);
+    $("#ship").after(`<div class="laserBeem" style="left:`+(mouseX)+`px; top:`+(mouseY-80)+`px;" data-power="30"></div>`);
 
 }
 
@@ -51,7 +51,6 @@ var interVal = setInterval(function(){
 //for click and hold function 
 var timeout_id = 0,
     hold_time = 500,
-    hold_menu = $('#ship'),
     hold_trigger = $('#ship');
 var createBeam = false;
 var bCount = 0;
@@ -95,17 +94,33 @@ hold_trigger.mousedown(function() {
 var windowWidth = $(window).width();
 var windowHeight = $(window).height();
 var barOfsetTop = windowHeight -20;
+var bossCoutn  = 0;
 
+// for enemy creating frequency
 var arTime = setInterval(function(){
-    // createNewEnemy();
-}, 1000);
+    createNewEnemy();
+    bossCoutn++;
+    createBigboss(bossCoutn);
+}, 3000);
+
+// for enemy creating small enemy
 var createNewEnemy =()=>{
     var randomPositon = Math.random() * (windowWidth - 50);
-    console.log(randomPositon);
+    // console.log(randomPositon);
     var redRandom = Math.floor(Math.random() * 3); 
     $( "body" ).prepend( "<div class='enemy' style='left:"+randomPositon+"px;' data-power='30' ><img src='images/enemy/"+redRandom+".svg'></div>" );
 }
 createNewEnemy();
+
+var createBigboss = (bossCoutn)=>{
+    if(bossCoutn%50===2){
+        console.log("bigbossCreate");
+        var randomPositon = Math.random() * (windowWidth - 100);
+        $("body").prepend( "<div class='bigBoss enemy' style='left:"+randomPositon+"px;' data-power='200' ><img src='images/enemy/gaint.svg'></div>" );
+    }
+    
+}
+createBigboss();
 
 
 
@@ -117,16 +132,19 @@ createNewEnemy();
 
 //for enemy destroy
 var killCount =0;
+var restPower = 0;
 let enemyDestroy = ()=>{
     let eachEnemyOfset = 0;
     let eachEnemyWidth = 0;
     let eachEnemyHeight = 0;
+    let enemyPower = 0;
     let beamdtls = {};
     $('.enemy').each(function(i){
         var toBekill = $(this);
         eachEnemyOfset = $(this).offset();
         eachEnemyWidth = $(this).width();
-        // console.log(eachEnemyWidth);
+        enemyPower = $(this).attr("data-power");
+        console.log(enemyPower);
 
         eachEnemyHeight = $(this).height();
         $('.laserBeem').each(function(){
@@ -134,24 +152,35 @@ let enemyDestroy = ()=>{
             beamdtls={
                 width: $(this).width(),
                 height: $(this).height(),
-                offset: $(this).offset()
+                offset: $(this).offset(),
+                power: $(this).attr("data-power")
             }
-            console.log("enemy right: "+ (eachEnemyOfset.left+50), "enemy beamPos: "+ beamdtls.offset.left);
+            
+            // console.log("enemy right: "+ (eachEnemyOfset.left+50), "enemy beamPos: "+ beamdtls.offset.left);
+            // console.log(beamdtls.offset.top<eachEnemyOfset.top+eachEnemyHeight);
+            console.log(restPower);
+            // toBekill.attr('data-power', restPower);
 
-            console.log(beamdtls.offset.top<eachEnemyOfset.top+eachEnemyHeight);
 
-            console.log(eachEnemyOfset.left>beamdtls.offset.left);
-
-            if(beamdtls.offset.top<eachEnemyOfset.top+(eachEnemyHeight/4) && eachEnemyOfset.left<=beamdtls.offset.left && (eachEnemyOfset.left+50)>beamdtls.offset.left  ){
-                toBekill.find('img').addClass("hidden");
-                toBekill.removeClass().addClass("blasted").append('<img class="blastIcon in" src="images/blast/1.png">');
-                toBeReomved.remove();      
-                setTimeout(function(){
-                    $(".blasted").fadeOut(300, function(){
-                        $(this).remove();
-                    });
-                }, 100);
-                killCount++;
+            if(beamdtls.offset.top<eachEnemyOfset.top+(eachEnemyHeight/4) && eachEnemyOfset.left<=beamdtls.offset.left && (eachEnemyOfset.left+eachEnemyWidth)>beamdtls.offset.left){
+                restPower = enemyPower - beamdtls.power;
+                if(restPower<=0){
+                    toBekill.find('img').addClass("hidden");
+                    toBekill.removeClass("enemy").addClass("blasted").append('<img class="blastIcon in" src="images/blast/1.png">');
+                       
+                    setTimeout(function(){
+                        $(".blasted").fadeOut(300, function(){
+                            $(this).remove();
+                        });
+                    }, 100);
+                    killCount++;
+                    $('.killCoutn h2 span').html(killCount);
+                }else{
+                    
+                    toBekill.attr('data-power', restPower);
+                }
+                toBeReomved.remove();
+                
             }
 
         });
@@ -176,7 +205,7 @@ setInterval(function(){
     var ofseTop = parseInt(barOfsetTop);
     // console.log(parseInt(eachLeft));
     var y = parseInt(barPositionleft) + 200;
-    console.log(baGro);
+    // console.log(baGro);
     if(ofseTop - 20 < parseInt(eachTop) && parseInt(eachLeft) > parseInt(barPositionleft) && (parseInt(eachLeft) < y) ){
       pointcount++;
       $('.yourSchoreis').html(pointcount);

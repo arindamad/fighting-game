@@ -178,7 +178,7 @@ body::after {
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 0;
+    top: -50px;
     left: 0;
     z-index: 3;
   }
@@ -220,10 +220,19 @@ body::after {
     left: 0;
     z-index: 9;
     text-align: center;
-    border-radius: 50%;
-    border: 1px solid #333;
     padding: 20px;
 }
 .killCoutn h2{
     font-size: 20px;
+}
+.bigBoss.enemy{
+    width: 100px;
+    height: 100px;
+}
+
+.bigBoss.blasted{
+    width: 100px;
+}
+.bigBoss.blasted img{
+    width: 100px;
 }
