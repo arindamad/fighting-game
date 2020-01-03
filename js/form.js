@@ -30,9 +30,26 @@ var fireLocation = "";
 
 // Function to get get form values
 function getInputVal(id){
-return document.getElementById(id).value;
+    return document.getElementById(id).value;
 }
-// var name = snapshot.name();
+
+
+var getDataFormDatabse= ()=>{    
+    var leadsRef = firebase.database().ref('messages');
+    leadsRef.on('value', function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        console.log(childData);
+        makeTable(childData);
+        $('.scoreBoard').fadeIn();
+        });    
+    });
+}
+
+
+
+
+
 // Save message to firebase
 function saveMessage(name, score){
 var newMessageRef = messagesRef.push();
@@ -49,10 +66,13 @@ newMessageRef.set({
     // The write failed...
     alert("Please try again");
     } else {
-    // Data saved successfully!
-    alert("success");
+    // alert("success");
     $("#saveNameGroup").fadeOut();
-    $(".gameOver h1").html("Welcome "+name).fadeIn();
+    getDataFormDatabse();
+    // $(".gameOver h1").html("Welcome "+name).fadeIn();
+    
+
+
     }
 });
 
@@ -70,3 +90,8 @@ if (typeof(Storage) !== "undefined") {
   } else {
     // document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
   }
+
+
+var makeTable = (obj)=>{
+    $('#scoreTable tbody').append('<tr><td>'+obj.name+'</td><td>'+obj.score+'</td></tr>')
+}

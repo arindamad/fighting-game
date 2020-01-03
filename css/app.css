@@ -302,7 +302,6 @@ body::after {
     width: 100%;
     font-size: 18px;
     background: #ffffff;
-    margin-top: 15px;
     border-collapse: collapse;
 }
 .scoreBoard table tr th {
@@ -320,4 +319,12 @@ body::after {
     color: #ffe69e;
     margin-bottom: 34px;
     margin-top: 6px;
+}
+
+
+/* //for showing result */
+.scoreBoard{
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
