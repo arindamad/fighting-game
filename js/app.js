@@ -144,7 +144,7 @@ let enemyDestroy = ()=>{
         eachEnemyOfset = $(this).offset();
         eachEnemyWidth = $(this).width();
         enemyPower = $(this).attr("data-power");
-        console.log(enemyPower);
+        // console.log(enemyPower);
 
         eachEnemyHeight = $(this).height();
         $('.laserBeem').each(function(){
@@ -158,7 +158,7 @@ let enemyDestroy = ()=>{
             
             // console.log("enemy right: "+ (eachEnemyOfset.left+50), "enemy beamPos: "+ beamdtls.offset.left);
             // console.log(beamdtls.offset.top<eachEnemyOfset.top+eachEnemyHeight);
-            console.log(restPower);
+            // console.log(restPower);
             // toBekill.attr('data-power', restPower);
 
 
@@ -175,8 +175,7 @@ let enemyDestroy = ()=>{
                     }, 100);
                     killCount++;
                     $('.killCoutn h2 span').html(killCount);
-                }else{
-                    
+                }else{                    
                     toBekill.attr('data-power', restPower);
                 }
                 toBeReomved.remove();
@@ -195,37 +194,22 @@ var pointcount = 0;
 var falseCount = 0;
 // for movement
 setInterval(function(){
-  var baGro= "";
   $( ".enemy" ).each(function(index){
-    baGro = $( ".enemy" ).eq(index).css('background-color');
     var eachTop = $(this).css('top');
     var eachLeft = $(this).css('left');
-    
-    var barPositionleft = $('.bar').css('left');
-    var ofseTop = parseInt(barOfsetTop);
-    // console.log(parseInt(eachLeft));
-    var y = parseInt(barPositionleft) + 200;
-    // console.log(baGro);
-    if(ofseTop - 20 < parseInt(eachTop) && parseInt(eachLeft) > parseInt(barPositionleft) && (parseInt(eachLeft) < y) ){
-      pointcount++;
-      $('.yourSchoreis').html(pointcount);
-       $( ".enemy" ).eq(index).remove();
-       console.log(pointcount);
-       $( ".bar" ).css('background-color', baGro );
-       }else if(parseInt(eachTop) >= parseInt(windowHeight)){
+    if(parseInt(eachTop) >= parseInt(windowHeight)){
          if(falseCount==3){
-           $('.outOver').fadeIn();
-           $('.outOver p').text('Your score is '+ pointcount);
+           $('.gameOver').fadeIn();
+           $('.gameOver h4 span').text(killCount);           
+           $(".enemy" ).remove();
            clearInterval(arTime);
-           $( ".enemy" ).remove();
          }else{
             falseCount++;
          }
-         $( ".enemy" ).eq(index).remove();
-        // console.log('true');
+         $(".enemy" ).eq(index).remove();
+        console.log('true');
        }else{
         $(this).css('top',parseInt(eachTop) + 1);
        }
-     
   });
 }, 10);
