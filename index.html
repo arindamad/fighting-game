@@ -85,97 +85,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="js/app.js"></script>
-    <script src="js/form.js"></script>
-
+   
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
+    <script src="js/form.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> -->
-
-    <script>
-    
-       
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyCzjKe7J0REFL-eku83LPmyrevYpUfDA7Y",
-        authDomain: "fighter-db-89873.firebaseapp.com",
-        databaseURL: "https://fighter-db-89873.firebaseio.com",
-        projectId: "fighter-db-89873",
-        storageBucket: "fighter-db-89873.appspot.com",
-        messagingSenderId: "806782425742",
-        appId: "1:806782425742:web:e034d66f8900e46d3307df",
-        measurementId: "G-YM9LFCMR5J"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    // firebase.analytics();
-
-    
-    // Reference messages collection
-    var messagesRef = firebase.database().ref('messages');
-
-    console.log(firebase.database().ref('messages/' + 1254).database);
-
-    // Listen for form submit
-    document.getElementById('saveNameGroup').addEventListener('submit', submitForm);
-
-    // Submit form
-    function submitForm(e){
-    e.preventDefault();
-
-    // Get values
-    var name = getInputVal('playerName');
-    var score = killCount;
-    // var msg = getInputVal('visitor_msg');
-
-    // Save message
-    saveMessage(name, score);
-
-    // Show alert
-    // document.querySelector('.alert').style.display = 'block';
-    $('.alert').fadeIn();
-
-    // Hide alert after 3 seconds
-    // setTimeout(function(){
-    //     $('.alert').fadeOut();
-    //     // document.querySelector('.alert').style.display = 'none';
-    // },3000);
-
-    // Clear form
-    // document.getElementById('visitor_name').value="";
-    // document.getElementById('visitor_email').value="";
-    // document.getElementById('visitor_msg').value="";
-    }
-
-    // Function to get get form values
-    function getInputVal(id){
-    return document.getElementById(id).value;
-    }
-
-    // Save message to firebase
-    function saveMessage(name, score){
-    var newMessageRef = messagesRef.push();
-    newMessageRef.set({
-        name: name,
-        score:score
-    }, function(error){
-        if (error) {
-        // The write failed...
-        alert("failed");
-        
-
-        } else {
-        // Data saved successfully!
-        alert("success");
-        $("#saveNameGroup").fadeOut();
-        $(".gameOver h1").html("Welcome "+name).fadeIn();
-        }
-    });
-    }
-
-    </script>
 </body>
 
 </html>
