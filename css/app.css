@@ -1,458 +1,330 @@
-*{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+* {
     box-sizing: border-box;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
-body{
-    font-family: 'Muli', sans-serif;
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
     font-size: 14px;
-    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    background: url(../images/04.jpg);
+    -webkit-animation:100s scroll infinite linear reverse;
+    -moz-animation:100s scroll infinite linear reverse;
+    -o-animation:100s scroll infinite linear reverse;
+    -ms-animation:100s scroll infinite linear reverse;
+    animation:100s scroll infinite linear reverse;
+    background-size: 600px;
 }
-ul{
-    list-style: none;
-    margin: 0;
+@-webkit-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-moz-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-o-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @-ms-keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+    
+    @keyframes scroll{
+    100%{
+    background-position:0px -3000px;
+    }
+    }
+body::after {
+    clear: both;
 }
-a, input[type="submit"], button{
+
+.heroship {
+    user-select: none;
     cursor: pointer;
-    -moz-transition: all ease-in-out 300ms;
-    -webkit-transition: all ease-in-out 300ms;
-    transition: all ease-in-out 300ms;
-}
-a, img{
-    display: inline-block;
-}
-a:hover{
-    text-decoration: none;
-}
-div, h1, h2, h3, h4, h5, h6, label, span, big, small{
-    margin: 0;
-    padding: 0;
-}
-h1{
-    font-weight: 800;
-}
-h2{
-    font-weight: 700;
-    font-size: 36px;
-    margin-bottom: 15px;
-}
-h3{
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 15px;
-}
-h4{
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-h5{
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-h6{
-    font-weight: 700;
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.arLogo{
-    display: block;
-}
-.arLogo img{
-    display: block;
-    width: 238px;
-}
-.relative{
-    position: relative;
-}
-/* =======header======>>> */
-    .topHeader{
-        background: rgba(31, 166, 71, 0.4);
-        padding: 9px 0;
-    }
-    .topHeader .container-fluid{
-        padding: 0 30px;
-    }
-    .topHeader marquee{
-        color: #fff;
-        margin-bottom: 0;
-        display: block;
-        font-weight: 600;
-    }
-    .arBannerCarousel .item{
-        -webkit-background-size: cover !important;
-        -moz-background-size: cover !important;
-        background-size: cover !important;
-        height: 100vh;
-    }
-    header{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        width: 100%;
-    }
-    .bottomHeader{
-        background: rgba(0, 0, 0, 0.4);
-    }
-    .headerNav{
-        position: relative;
-        right: -18px;
-    }
-
-    .headerNav ul li{
-        padding: 0 18px;
-    }
-    .headerNav ul li a{
-        color: #fff;        
-        line-height: 80px;
-        display: block;
-        position: relative;
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-    .headerNav ul li a:hover, .headerNav ul li.active a{
-        color:#3eda0b;
-    }
-    .headerNav ul li.active a::after{
-        content: "";
-        width: 100%;
-        height: 4px;
-        background: #3eda0b;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
-    .homeSearchField{
-        position: absolute;
-        bottom: 100px;
-        left: 50%;
-        -webkit-transform: translate(-50%, 0);
-        transform: translate(-50%, 0);
-        z-index: 1;
-        max-width: 750px;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.25);
-        padding: 20px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        -moz-box-shadow: 10px 0 20px rgba(0,0,0,0.2);
-        -webkit-box-shadow: 10px 0 20px rgba(0,0,0,0.2);
-        box-shadow: 10px 0 20px rgba(0,0,0,0.2);
-    }
-    .homeSearchField .row{
-        margin: 0 -5px;
-    }
-    .homeSearchField [class*="col"]{
-        padding: 0 5px;
-    }
-    .arSelect1{
-        width: 100%;
-        background: #fff;
-    }
-    .exploreBtn{
-        height: 40px;
-        line-height: 40px;
-        padding: 0 20px;
-        background: #1fa647;
-        color: #fff;
-        border: none;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-    .exploreBtn:focus{
-        outline: none;
-        
-    }
-    .arSelect1{
-        height: 40px;
-        line-height: 40px;
-        -webkit-appearance: none;
-        appearance: none;
-        padding: 0 20px 0 10px;
-        color: #a5a5a5;
-        border: none;
-    }
-    .dropIcons {
-        position: absolute;
-        top: 50%;
-        right: 25px;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
-    .banerHeaing{
-        font-size: 18px;
-        color: #fff;
-        text-align: center;
-        position: relative;
-        font-weight: 700;
-        text-transform: uppercase;
-        padding-bottom: 5px;
-    }
-    .banerHeaing::after{
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 0);
-        width: 60px;
-        height: 1px;
-        background: #1fa647;
-    }
-    .arBannerCarousel .owl-dots {
-        position: absolute;
-        bottom: 30px;
-        left: 0;
-        width: 100%;
-        z-index: 6;
-        text-align: center;
-    }
-    .arBannerCarousel .owl-dots .owl-dot{
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: #ffffff;    
-        padding: 4px;    
-        position: relative;
-    }
-    .arBannerCarousel .owl-dots .owl-dot  + .owl-dot{
-        margin-left: 9px;
-    }
-    .arBannerCarousel .owl-dots .owl-dot.active span {
-        width: 10px;
-        height: 10px;
-        background: #1fa647;
-        display: block;
-        border-radius: 50%;
-        position: absolute;
-        top: 4px;
-        left: 4px;
-    }
-    .bannCaption{
-        position: absolute;
-        bottom: 30px;
-        right: 30px;
-        background: rgba(255, 255, 255, 0.50);
-        padding: 8px 18px;
-
-    }
-    .bannCaption::after{
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 5px;
-        height: 100%;
-        background: #3eda0a;
-    }
-    .bannCaption ul{
-        color: #000;
-    }
-    .bannCaption ul strong{
-        margin-right: 10px;
-    }
-    .arBannerCarousel.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev{
-        position: absolute;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        transform: translateY(-50%);
-
-    }
-    .arBannerCarousel.owl-carousel .owl-nav button.owl-next:focus, .owl-carousel .owl-nav button.owl-prev:focus{
-        outline: none;
-    }
-    .arBannerCarousel.owl-carousel .owl-nav button.owl-prev{
-        left: 20px;
-    }
-    .arBannerCarousel.owl-carousel .owl-nav button.owl-next{
-        right: 20px;
-    }
-
-/* <<<<<=======header======*/
-
-
-/* //each box css */
-.eachBoxType a{
-    display: block;
-    position: relative;
-}
-.eachBoxType a img{
-    display: block;
-    width: 100%;
-
-}
-.eachBoxType .destiHeading{
-    width: 100%;
+    width: 100px;
+    height: 100px;
     position: absolute;
     bottom: 0;
-    left: 0;
-    color: #fff;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 9px;
-    -webkit-transition: all ease-in-out 300ms;
-    -moz-transition: all ease-in-out 300ms;
-    transition: all ease-in-out 300ms;
-    z-index: 2;
-    font-weight: 800;
-}
-.eachBoxType a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: rgba(62, 218, 11, 0.4);
-    height: 40px;
-    width: 100%;
-    -webkit-transition: all ease-in-out 300ms;
-    -moz-transition: all ease-in-out 300ms;
-    transition: all ease-in-out 300ms;
-}
-.eachBoxType:hover a::after {
-    height: 100%;
-    background: rgba(0, 0,0, 0.5);
-}
-.eachBoxType:hover .destiHeading {
-    bottom: 50%;
-    transform: translateY(50%);
-    font-size: 24px;
-    color: #fff;
-}
-
-.popDestination .row{
-    margin: 0 -30px;
-}
-.popDestination [class*="col"]{
-    padding: 0 30px;
-    margin-top: 60px;
-}
-.bCover{
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    background-size: cover !important; 
-}
-.popDestination{
-    padding: 20px 0 80px;
-}
-.echFtInr h6{
-    color: #fff;
-    text-transform: uppercase;
-    margin-bottom: 10px;    
-}
-.echFtInr ul li{
-    color: #fff;
-}
-
-.ftLinks li a{
-    color: #fff;
-}
-.ftLinks li a:hover{
-    color: #1fa647;
-}
-.ftAdres li + li{
-    margin-top: 15px;
-}
-.ftLinks li + li{
-    margin-top: 6px;
-}
-.ftAdres li span{
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background: #1fa647;
-    border-radius: 50%;
-    line-height: 24px;
-    text-align: center;
-    margin-right: 8px;
-}
-.ftAdres  li span .fa-envelope{
-    font-size: 12px;
-}
-.echFtInr p{
-    color: #fff;
-}
-.bottomFooter p{
-    color: #fff;
-    margin-bottom: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    padding: 15px 0;
-}
-.bottomFooter p a{
-    font-weight: 700;
-    color: #3ed90a;
-    text-transform: uppercase;
-}
-footer{
+    left: 50%;
     z-index: 1;
 }
-footer::after{
-    content: "";
-    width: 100%;
-    height: 100%;
+
+.mousePos {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#roketTel {
+    animation: example 2s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes example {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+    }
+}
+
+/* Standard syntax */
+
+@keyframes example {
+    from {
+        fill: red;
+        transform: scale(1);
+    }
+    to {
+        fill: rgb(255, 94, 0);
+        transform: scale(0.9) translate(5%, 5%);
+    }
+}
+
+.laserBeem {
+    position: absolute;
+    width: 4px;
+    height: 60px;
+    transform: translateX(-50%);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00ac95+1,ffffff+100 */
+    background: #00ac95; /* Old browsers */
+    background: -moz-linear-gradient(top,  #00ac95 1%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #00ac95 1%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #00ac95 1%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ac95', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.power {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
     z-index: -1;
+    width: calc(100% + 44px) !important;
+    animation: scaleable 0.5s infinite;
+    margin: -22px;
+    display: none;
 }
-.topFooter{
-    padding: 58px 0;
+
+/* Safari 4.0 - 8.0 */
+
+@-webkit-keyframes scaleable {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: yellow;
+    }
 }
-.modifiedModal .modal-body .arSelect1 {
-    border: 1px solid #dadada;
+
+/* Standard syntax */
+
+@keyframes scaleable {
+    from {
+        transform: scale(1);
+        opacity: 0;
+    }
+    to {
+        transform: scale(0.9);
+        opacity: 1;
+    }
 }
-.modifiedModal .modal-body{
-    padding: 2rem;
-}
-.modifiedModal .banerHeaing {
-    font-size: 22px;
-    padding-bottom: 10px;
-    margin-bottom: 18px;
-}
-.modifiedModal .close {
+
+.bigBeam {
     position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 30px;
-    height: 30px;
-    background: #000;
+    width: 78px;
+    height: 100%;
+    background: rgba(248, 80, 50, 1);
+    background: -moz-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(248, 80, 50, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
+    background: -webkit-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -o-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: -ms-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, rgba(248, 80, 50, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#ffffff', GradientType=0);
+    transform: translateX(-50%);
+    top: 0;
+    left: 0;
+    transition: all 600ms ease-in-out;
+}
+.bigBeam.move{
+    top: -100%;
+}
+#pathToBeShown{
+    display: none;
+}
+
+
+/* //css for enemy */
+.enemy{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    z-index: 3;
+  }
+.enemy img{
+    width: 100%;    
+}
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+.blastIcon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;    
+    transform: scale(0.2);    
+}
+
+
+.blastIcon.in{
     opacity: 1;
-    color: #fff;
-    line-height: 25px;
-    border: none;
-    border-radius: 50%;
-    font-size: 15px;
+    visibility: visible;
+    transform: scale(2);
+    
 }
-.modifiedModal .banerHeaing{
-    color: #333;
+
+/* //for explosion  */
+.blasted{
+    position: absolute;
+    width: 50px;    
 }
-.sideFixedBar{
+.blasted .blastIcon{
+    width: 50px;
+}
+.killCoutn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    text-align: center;
+    padding: 20px;
+}
+.killCoutn h2{
+    font-size: 20px;
+}
+.bigBoss.enemy{
+    width: 100px;
+    height: 100px;
+}
+
+.bigBoss.blasted{
+    width: 100px;
+}
+.bigBoss.blasted img{
+    width: 100px;
+}
+
+/* //for game over */
+.gameOver{
     position: absolute;
     top: 50%;
-    left: 0;
-}
-.sideFixedBar ul li a{
-    width: 64px;
-    height: 64px;
-    line-height: 64px;
-    color: #fff;
-    font-size: 32px;
-    background: #1fa647;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 100%;
     text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    z-index: 6;
 }
-.sideFixedBar ul li + li{
-    border-top: 1px solid #3eda0b;
+.gameOver h1 {
+    font-size: 60px;
+    color: #ff6262;
 }
-.sideFixedBar ul li a:hover{
-    background: #3eda0b;
+.gameOver h2 {
+    font-size: 50px;
+    color: #31ffe3;
 }
-.ftLogo img{
-    width: 238px;
-    max-width: 100%;
+.gameOver h4 {
+    font-size: 28px;
+    color: #94f0ff;
+    margin: 6px 0 15px;
+}
+.gameOver p {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 14px;
+}
+.playerName{
+    width: 100%;
+    height: 46px;
+    line-height: 46px;
+    border: none;
+    font-size: 18px;
+    padding: 0 15px;
+}
+.playerName:focus{
+    outline: none;
+}
+.saveBtn{
+    padding: 0 20px;
+    height: 46px;
+    line-height: 46px;
+    background: #098fa5;
+    color: #fff;
+    border: none;
+    font-size: 17px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+.saveNameGroup{
+    position: relative;
+    padding-right: 78px;
+}
+.scoreBoard table{
+    width: 100%;
+    font-size: 18px;
+    background: #ffffff;
+    border-collapse: collapse;
+}
+.scoreBoard table tr th {
+    background: #098fa5;
+    padding: 6px 8px;
+    color: #e9fcff;
+}
+.scoreBoard table tr td {
+    padding: 6px 8px;
+    border-right: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+}
+.topSchore {
+    font-size: 28px;
+    color: #ffe69e;
+    margin-bottom: 34px;
+    margin-top: 6px;
+}
+
+
+/* //for showing result */
+.scoreBoard{
+    max-height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
