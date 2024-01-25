@@ -25,6 +25,8 @@ fire();
 
 // for Create laserbeem
 var createLeaser = (mouseX, mouseY)=>{
+    const audio = new Audio('audio/laser-gun-81720.mp3');
+    audio.play();
     $("#ship").after(`<div class="laserBeem" style="left:`+(mouseX)+`px; top:`+(mouseY-80)+`px;" data-power="30"></div>`);
 
 }
@@ -32,6 +34,8 @@ var createLeaser = (mouseX, mouseY)=>{
 
 //for click elem movement 
 var interVal = setInterval(function(){
+    // const audio = new Audio('audio/plasma-gun-fire-162136.mp3');
+    // audio.play();
     $('.laserBeem').each(function(i){
         var topVal = $(this).css('top');
         topVal=topVal.split("px")[0] - 50;
@@ -74,6 +78,9 @@ hold_trigger.mousedown(function() {
     $('#power').fadeOut();
     if(createBeam === true){
         console.log("create new beam");
+        const audio = new Audio('audio/plasma-gun-fire-162136.mp3');
+        audio.play();
+        
         $("#ship").after(`<div class="bigBeam" style="left:`+(e.pageX)+`px;" data-power="10"></div>`);
         setTimeout(function(){
             $('.bigBeam').addClass("move");
