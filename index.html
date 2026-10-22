@@ -3,86 +3,167 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet">
+
+    <!-- Primary SEO -->
+    <title>Nova Strike: Free HTML5 Space Shooter Game in JavaScript</title>
+    <meta name="description" content="Play Nova Strike free in your browser: an arcade space shooter built with JavaScript and HTML5 Canvas. Two lasers, 5 levels, boss fights. No download.">
+    <meta name="keywords" content="space shooter game, HTML5 game, JavaScript game, browser game, online shooting game, free online game, canvas game, arcade shooter, shoot em up, shmup, bullet hell, spaceship game, laser shooting game, 2D game development, game developer portfolio, web game developer, frontend game developer, Web Audio API, Firebase leaderboard, vanilla JavaScript">
+    <meta name="author" content="Arindam Sarkar">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://arindamad.github.io/fighting-game/">
+    <meta name="theme-color" content="#02030a">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="apple-touch-icon" href="images/favicon.svg">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Nova Strike">
+    <meta property="og:title" content="Nova Strike: Free HTML5 Space Shooter Game">
+    <meta property="og:description" content="An arcade space shooter built with JavaScript and HTML5 Canvas. Two laser types, enemies that fire back, boss fights and a leaderboard. Play free in your browser.">
+    <meta property="og:url" content="https://arindamad.github.io/fighting-game/">
+    <meta property="og:image" content="https://arindamad.github.io/fighting-game/images/og-cover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Nova Strike gameplay: a player spaceship fighting a boss in space">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nova Strike: Free HTML5 Space Shooter Game">
+    <meta name="twitter:description" content="Arcade space shooter built with JavaScript and HTML5 Canvas. Play free in your browser.">
+    <meta name="twitter:image" content="https://arindamad.github.io/fighting-game/images/og-cover.jpg">
+
+    <!-- Structured data: helps Google understand this is a game and who built it -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["VideoGame", "WebApplication"],
+        "name": "Nova Strike",
+        "alternateName": "Nova Strike Space Shooter",
+        "description": "A free arcade space shooter game built with JavaScript, HTML5 Canvas and the Web Audio API. Features two laser weapons, enemies that fire back, 5 levels with boss fights and an online leaderboard.",
+        "url": "https://arindamad.github.io/fighting-game/",
+        "image": "https://arindamad.github.io/fighting-game/images/og-cover.jpg",
+        "screenshot": "https://arindamad.github.io/fighting-game/images/screenshot-gameplay.jpg",
+        "genre": ["Shooter", "Arcade", "Shoot 'em up"],
+        "gamePlatform": ["Web browser", "Desktop", "Mobile"],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "playMode": "SinglePlayer",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "keywords": "space shooter, HTML5 game, JavaScript game, browser game, canvas game, arcade shooter",
+        "author": {
+            "@type": "Person",
+            "name": "Arindam Sarkar",
+            "jobTitle": "Frontend & JavaScript Game Developer",
+            "url": "https://github.com/arindamad",
+            "sameAs": ["https://github.com/arindamad"],
+            "knowsAbout": ["JavaScript", "HTML5 Canvas", "Game Development", "Web Audio API", "Firebase", "CSS"]
+        },
+        "codeRepository": "https://github.com/arindamad/fighting-game",
+        "programmingLanguage": ["JavaScript", "HTML", "CSS"]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
-    <div class="heroship" id="ship">
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 361.309 361.309" style="enable-background:new 0 0 361.309 361.309;"
-            xml:space="preserve">
-            <path fill="#6edcdd" d="M94.96,146.812c-0.3-4.494,0.946-18.344-3.883-13.857c-11.532,10.717-22.584,24.722-22.584,24.722
-                c-2.969,2.821-5.4,8.48-5.4,12.579v104.281c0,4.096,2.432,5.141,5.4,2.314l43.839-45.804c2.851-2.879,0.512-5.724-0.389-7.542
-                C103.089,205.607,97.039,177.782,94.96,146.812z" />
-            <path fill="#6edcdd" d="M292.815,157.676c0,0-11.051-14.005-22.584-24.722c-4.826-4.486-3.582,9.364-3.881,13.857
-                c-2.082,30.97-8.129,58.796-16.984,76.692c-0.9,1.819-3.238,4.664-0.389,7.542l43.838,45.804c2.971,2.826,5.4,1.781,5.4-2.315
-                V170.255C298.218,166.157,295.786,160.498,292.815,157.676z" />
-            <path fill="#186465"
-                d="M180.71,236.783c43.977,0,54.656-10.348,54.656-10.348c12.748-21.398,20.566-62.267,20.566-105.767
-                C255.933,54.682,197.978,0,180.55,0c-17.355,0-75.384,54.682-75.384,120.669c0,42.211,7.822,84.368,20.571,105.767
-                C125.738,226.436,135.775,236.783,180.71,236.783z M179.747,57.526c21.216,0,38.417,17.199,38.417,38.413
-                c0,21.218-17.2,38.416-38.417,38.416c-21.215,0-38.411-17.198-38.411-38.416C141.336,74.725,158.532,57.526,179.747,57.526z" />
-            <path id="roketTel" fill="#ff5200" d="M234.536,240.931c-1.857-7.202-2.916,6.584-54.354,6.665c-51.44-0.081-52.495-13.867-54.354-6.665
-                c-0.364,1.406-2.108,16.785-2.649,22.345c-0.688,7.14-2.158,15.922-2.158,25.168c0,21.789,12.241,39.844,18.209,39.844
-                c6.377,0,12.418-15.99,12.418-15.99c0.756-1.24,1.826-1.152,2.378,0.189c0,0,13.96,48.822,25.71,48.822
-                c0.149,0,0.3-0.041,0.447-0.057c0.147,0.016,0.299,0.057,0.445,0.057c11.752,0,25.71-48.822,25.71-48.822
-                c0.554-1.342,1.624-1.43,2.379-0.189c0,0,6.042,15.99,12.416,15.99c5.97,0,18.213-18.055,18.213-39.844
-                c0-9.246-1.473-18.028-2.16-25.168C236.646,257.716,234.901,242.337,234.536,240.931z" />
+    <canvas id="game"></canvas>
 
-
-
-            <radialGradient id="SVGID_1_" cx="179.7493" cy="95.9395" r="38.415" gradientUnits="userSpaceOnUse">
-                <stop offset="0" style="stop-color:#ff4815;stop-opacity:0.2" />
-                <stop offset="1" style="stop-color:#ff4815" />
-            </radialGradient>
-            <path id="pathToBeShown" fill="url(#SVGID_1_)" d="M218.164,95.934c0,21.22-17.2,38.42-38.42,38.42c-21.21,0-38.41-17.2-38.41-38.42c0-21.21,17.2-38.41,38.41-38.41C200.964,57.524,218.164,74.724,218.164,95.934z" />
-        </svg>
-
-        <img id="power" class="power" src="images/power.svg" alt="">
-    </div>
-
-    <div class="mousePos"></div>
-    <div class="killCoutn">
-        <h2>Score :<span>0</span></h2>
-    </div>
-    <div class="gameOver" style="display: none;">
-        <h1 style="display: none;">Congratualtion</h1>
-        <div class="topSchore"  style="display: none;">Highest Score</div>
-        <h2>Game Over</h2>
-        <h4>Your Score is <span>0</span></h4>
-        <p style="display: none;">Press "R" to Restart Game</p>
-        <form id="saveNameGroup" class="saveNameGroup">
-            <input type="text" required id="playerName" class="playerName" name="playerName" placeholder="Please Enter Your Name">
-            <button type="submit" class="saveBtn">Save</button>
-        </form>
-        <div class="scoreBoard" style="display: none;">
-            <table id="scoreTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Score</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-                
-            </table>
+    <!-- Title -->
+    <div id="title" class="screen show">
+        <div class="panel">
+            <h1 class="logo">NOVA<span>STRIKE</span></h1>
+            <p class="tagline">Five sectors. Five bosses. One pilot.</p>
+            <button class="btn primary blink" data-action="start">Press <kbd>Enter</kbd> to launch</button>
+            <div class="hi">High score <b id="titleHi">0</b></div>
+            <div class="controls-slot"></div>
+            <p class="credit">An HTML5 Canvas &amp; JavaScript space shooter by
+                <a href="https://github.com/arindamad" target="_blank" rel="noopener">Arindam Sarkar</a>
+                · <a href="https://github.com/arindamad/fighting-game" target="_blank" rel="noopener">Source on GitHub</a></p>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
-   
+    <noscript>
+        <div class="screen show">
+            <div class="panel">
+                <h1 class="logo">NOVA<span>STRIKE</span></h1>
+                <p class="tagline">A free browser space shooter game built with JavaScript and HTML5 Canvas.</p>
+                <p>Please enable JavaScript to play.</p>
+            </div>
+        </div>
+    </noscript>
+
+    <!-- Pause -->
+    <div id="pause" class="screen">
+        <div class="panel">
+            <h2 class="heading">Paused</h2>
+            <div class="btn-row">
+                <button class="btn primary" data-action="resume">Resume <kbd>Esc</kbd></button>
+                <button class="btn" data-action="restart">Restart <kbd>R</kbd></button>
+                <button class="btn" data-action="title">Quit <kbd>T</kbd></button>
+            </div>
+            <div class="controls-slot"></div>
+        </div>
+    </div>
+
+    <!-- Game over -->
+    <div id="gameover" class="screen">
+        <div class="panel">
+            <h2 class="heading danger">Game Over</h2>
+            <div id="newHi" class="new-hi">New high score!</div>
+            <div class="stats">
+                <div><span>Score</span><b id="finalScore">0</b></div>
+                <div><span>Stage</span><b id="finalStage">1</b></div>
+                <div><span>Max combo</span><b id="finalCombo">0</b></div>
+            </div>
+            <form id="saveNameGroup" class="save-row">
+                <input type="text" required id="playerName" maxlength="16" autocomplete="off" placeholder="Enter your name for the leaderboard">
+                <button type="submit" class="btn primary">Save</button>
+            </form>
+            <div id="saveStatus" class="save-status"></div>
+            <div id="scoreBoard" class="score-board" style="display: none;">
+                <table id="scoreTable">
+                    <thead>
+                        <tr><th>#</th><th>Pilot</th><th>Score</th></tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="btn-row">
+                <button class="btn primary" data-action="restart">Play again <kbd>R</kbd></button>
+                <button class="btn" data-action="title">Menu <kbd>Esc</kbd></button>
+            </div>
+        </div>
+    </div>
+
+    <template id="controlsTpl">
+        <div class="controls">
+            <div><span>Move</span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / <kbd>&larr;</kbd><kbd>&uarr;</kbd><kbd>&darr;</kbd><kbd>&rarr;</kbd></div>
+            <div><span>Fire (hold)</span><kbd>Space</kbd> / <kbd>J</kbd> / left click</div>
+            <div><span>Switch laser</span><kbd>Q</kbd> / <kbd>Tab</kbd> / mouse wheel</div>
+            <div><span>Pulse laser / Plasma beam</span><kbd>1</kbd> <kbd>2</kbd></div>
+            <div><span>Nova bomb</span><kbd>B</kbd> / <kbd>X</kbd> / right click</div>
+            <div><span>Precision move</span><kbd>Shift</kbd></div>
+            <div><span>Pause</span><kbd>P</kbd> / <kbd>Esc</kbd></div>
+            <div><span>Sound / Music / Fullscreen</span><kbd>M</kbd> <kbd>N</kbd> <kbd>F</kbd></div>
+        </div>
+        <p class="tips"><b>Pulse laser</b> sprays bolts and upgrades with <b class="p">P</b> pickups (Lv 4+ adds homing missiles).
+            <b>Plasma beam</b> pierces every enemy in line and erases bullets, but drains energy and can overheat.
+            Graze bullets for points, chain kills for a score multiplier, and destroy whole formations for bonus drops.</p>
+    </template>
+
+    <script src="js/audio.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
     <script src="js/form.js"></script>
-
+    <script src="js/game.js"></script>
 </body>
 
 </html>

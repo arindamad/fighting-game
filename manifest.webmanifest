@@ -1,0 +1,14 @@
+{
+    "name": "Nova Strike: HTML5 Space Shooter Game",
+    "short_name": "Nova Strike",
+    "description": "Free browser space shooter game built with JavaScript and HTML5 Canvas. Two laser weapons, enemies that fire back, 5 levels and boss fights.",
+    "start_url": "./",
+    "display": "fullscreen",
+    "orientation": "any",
+    "background_color": "#02030a",
+    "theme_color": "#02030a",
+    "categories": ["games", "entertainment"],
+    "icons": [
+        { "src": "images/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    ]
+}

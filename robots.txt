@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arindamad.github.io/fighting-game/sitemap.xml
